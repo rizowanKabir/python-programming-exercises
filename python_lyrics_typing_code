@@ -1,0 +1,144 @@
+import sys
+import time
+import random
+import os
+
+# Neon Colors
+PINK = "\033[38;5;213m"
+PURPLE = "\033[38;5;141m"
+BLUE = "\033[38;5;117m"
+CYAN = "\033[38;5;159m"
+WHITE = "\033[97m"
+BOLD = "\033[1m"
+RESET = "\033[0m"
+
+COLORS = [PINK, PURPLE, BLUE, CYAN, WHITE]
+
+
+def typing_effect(text, speed=0.065):
+    color = random.choice(COLORS)
+
+    for char in text:
+        sys.stdout.write(f"{BOLD}{color}{char}{RESET}")
+        sys.stdout.flush()
+
+        time.sleep(max(0.005, speed + random.uniform(-0.015, 0.02)))
+
+    print()
+
+
+def main():
+    os.system("cls" if os.name == "nt" else "clear")
+
+    print(f"{PURPLE}{BOLD}")
+    print("╔══════════════════════════════════════════╗")
+    print("║          PYTHON LYRICS PLAYER            ║")
+    print("║              CHANNA MEREYA               ║")
+    print("║             ARIJIT SINGH                 ║")
+    print("╚══════════════════════════════════════════╝")
+    print(RESET)
+
+    time.sleep(1.5)
+
+    lyrics = """
+Acha chalta hoon
+
+Duaon mein yaad rakhna
+Mere zikr ka zubaan pe swaad rakhna
+
+Acha chalta hoon
+Duaon mein yaad rakhna
+Mere zikr ka zubaan pe swaad rakhna
+
+Dil ke sandookon mein
+Mere ache kaam rakhna
+Chitthi taaron mein bhi
+Mera tu salaam rakhna
+
+Andhera tera maine le liya
+Mera ujla sitaara tere naam kiya
+
+Channa mereya mereya
+Channa mereya mereya
+Channa mereya mereya beliya
+O piya..
+
+Channa mereya mereya
+Channa mereya mereya
+Channa mereya mereya beliya
+O piya..
+
+O piyaa.. piya.. piya..
+O Piyaa.. Oohh..
+
+Mm.. mehfil me teri hum naa reh jo
+Gham toh nahi hai, gham toh nahi hai
+Qisse humare nazdeekiyon ke
+Kam to nahi hai, kam to nahi hai
+
+Kitni dafaa subah ko meri
+Tere aangan mein baithe shaam kiya
+
+Channa mereya mereya
+Channa mereya mereya
+Channa mereya mereya beliya
+O piya..
+
+Channa mereya mereya
+Channa mereya mereya
+Channa mereya mereya beliya
+O piyaaaaaaaaa..
+
+O Piyaa.. piyaa..
+
+Channa mereya mereya
+Channa mereya mereya
+Channa mereya mereya o piya
+
+Channa mereya mereya
+Channa mereya mereya
+Channa mereya mereya beliya
+O piya..
+
+Tere rukh se apna raasta mod ke chala
+Chandan hoon main
+Apni khushboo chodke chala
+
+Mann ki maya rakhke tere takiye tale
+
+Channa mereya mereya
+Channa mereya mereya
+Channa mereya mereya
+
+O Piya
+"""
+
+    for line in lyrics.splitlines():
+
+        if line.strip() == "":
+            print()
+            time.sleep(0.45)
+            continue
+
+        # Chorus lines appear a little slower
+        if "Channa mereya" in line:
+            speed = 0.09
+        else:
+            speed = 0.065
+
+        typing_effect(line, speed)
+
+        # Pause between lyrics lines
+        time.sleep(0.35)
+
+    print(f"\n{PINK}{BOLD}")
+    print("       ♡ CHANNA MEREYA ♡")
+    print("       Made with Python")
+    print(RESET)
+
+
+if __name__ == "__main__":
+    try:
+        main()
+    except KeyboardInterrupt:
+        print(f"\n{RESET}Lyrics stopped!")

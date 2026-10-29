@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Production Case Studies | International States</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>body { background-color: #070709; color: #E2E8F0; font-family: 'Inter', sans-serif; } .hairline-all { border: 1px solid rgba(255,255,255,0.08); }</style>
+</head>
+<body class="p-8 max-w-5xl mx-auto">
+    <a href="{% url 'home' %}" class="text-xs font-mono text-purple-400 uppercase">← Return to Flagship</a>
+    <h1 class="text-4xl font-medium text-white my-6">Systems Architecture Archive</h1>
+    <div class="space-y-6">
+        {% for item in case_studies %}
+        <div class="hairline-all bg-[#0D0E12] p-8">
+            <span class="text-[10px] font-mono text-zinc-500 uppercase">{{ item.client_industry }}</span>
+            <h2 class="text-xl font-medium text-white mt-1 mb-3">{{ item.title }}</h2>
+            <p class="text-xs text-zinc-400 mb-6">{{ item.summary }}</p>
+            <a href="{% url 'case_study_detail' item.slug %}" class="text-xs font-mono text-purple-300 uppercase">Inspect Blueprint →</a>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
